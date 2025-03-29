@@ -1,0 +1,361 @@
+@import 'tailwindcss';
+@import '~bootstrap/dist/css/bootstrap.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.container {
+    padding-top: 20px;
+}
+
+h2 {
+    color: #007bff;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Style pour le bouton actif */
+.navbar-nav .nav-link.active {
+    color: black; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    border-bottom: 2px solid #007bff; /* Ligne en bas */
+}
+
+/* Effet de survol pour les boutons */
+.navbar-nav .nav-link:hover {
+    color: black; /* Couleur du texte au survol */
+}
+/* Exemple de styles personnalisés */
+.hover-underline:hover {
+    text-decoration: underline;
+    text-decoration-color: #007bff;
+    text-decoration-thickness: 2px;
+}
+
+.navbar-nav .nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Styles généraux */
+.hover-underline:hover {
+    text-decoration: underline;
+    text-decoration-color: #007bff;
+    text-decoration-thickness: 2px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    min-height: 100vh;
+    scroll-margin-top: 80px;
+}
+
+.nav-link:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Section Accueil avec image de fond */
+#accueil {
+    position: relative;
+    padding-top: 0;
+    color: white;
+}
+
+#accueil::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/football.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+#accueil::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Style pour le texte */
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content .lead {
+    font-size: 1.5rem;
+}
+
+.lead a {
+    color: #007bff !important;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.lead a:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+/* Styles pour la section À Propos */
+#apropos {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.social-icons {
+    margin-top: 2rem;
+}
+
+.social-icons a {
+    color: #007bff;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.social-icons a:hover {
+    color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.social-icons h5 {
+    margin-bottom: 1rem;
+    color: #495057;
+}
+
+/* Section Services */
+#services {
+    background-color: #f8f9fa;
+}
+
+#services .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+#services .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+#services .card-body {
+    padding: 2rem;
+}
+
+#services i {
+    transition: transform 0.3s ease;
+}
+
+#services .card:hover i {
+    transform: scale(1.1);
+}
+
+/* Section Contact */
+#contact {
+    background-color: #fff;
+}
+
+#contact .card {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+#contact .card:hover {
+    transform: translateY(-5px);
+}
+
+#contact iframe {
+    border-radius: 10px 10px 0 0;
+}
+
+#contact .list-unstyled li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+#contact a {
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+/* Style du formulaire de contact */
+#contact .card {
+    border-radius: 10px;
+}
+
+#contact .form-control {
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1rem;
+}
+
+#contact .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+#contact label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#contact .btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+#contact .btn-primary:hover {
+    background-color: #0069d9;
+    transform: translateY(-2px);
+}
+
+/* Style du footer */
+footer {
+    background-color: #343a40;
+    font-size: 0.9rem;
+}
+
+footer h5 {
+    letter-spacing: 1px;
+    font-size: 1rem;
+    color: #adb5bd;
+}
+
+footer p {
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style du bouton université */
+.btn-link:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.btn-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Texte arabe */
+.fw-bold {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.small {
+    font-size: 0.8rem;
+    color: #adb5bd;
+}
+
+/* Animation au survol */
+.btn-link:hover svg {
+    transform: rotate(360deg);
+    transition: transform 0.6s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pour une navbar sticky */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Animation du formulaire */
+#contact-form {
+    transition: all 0.5s ease;
+}
+
+/* Style actif pour la navigation */
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}

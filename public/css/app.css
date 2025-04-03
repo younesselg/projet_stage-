@@ -1,23 +1,8 @@
 @import 'tailwindcss';
 @import '~bootstrap/dist/css/bootstrap.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source "../**/*.blade.php";
-@source "../**/*.js";
-@source "../**/*.vue";
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-}
-
 .container {
     padding-top: 20px;
-}
-
-h2 {
-    color: #007bff;
 }
 
 .lead {
@@ -30,20 +15,16 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-
-/* Style pour le bouton actif */
 .navbar-nav .nav-link.active {
-    color: black; /* Couleur du texte */
-    font-weight: bold; /* Texte en gras */
-    border-bottom: 2px solid #007bff; /* Ligne en bas */
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
 }
 
-/* Effet de survol pour les boutons */
 .navbar-nav .nav-link:hover {
-    color: black; /* Couleur du texte au survol */
+    color: black;
 }
-/* Exemple de styles personnalisés */
+
 .hover-underline:hover {
     text-decoration: underline;
     text-decoration-color: #007bff;
@@ -54,13 +35,6 @@ h2 {
     color: #007bff;
     font-weight: bold;
     border-bottom: 2px solid #007bff;
-}
-
-/* Styles généraux */
-.hover-underline:hover {
-    text-decoration: underline;
-    text-decoration-color: #007bff;
-    text-decoration-thickness: 2px;
 }
 
 html {
@@ -77,7 +51,6 @@ section {
     outline-offset: 2px;
 }
 
-/* Section Accueil avec image de fond */
 #accueil {
     position: relative;
     padding-top: 0;
@@ -121,7 +94,6 @@ section {
     text-align: center;
 }
 
-/* Style pour le texte */
 .hero-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -142,7 +114,7 @@ section {
     text-decoration: underline;
     opacity: 0.9;
 }
-/* Styles pour la section À Propos */
+
 #apropos {
     background-color: #f8f9fa;
     padding: 4rem 0;
@@ -168,7 +140,6 @@ section {
     color: #495057;
 }
 
-/* Section Services */
 #services {
     background-color: #f8f9fa;
 }
@@ -195,7 +166,6 @@ section {
     transform: scale(1.1);
 }
 
-/* Section Contact */
 #contact {
     background-color: #fff;
 }
@@ -229,8 +199,6 @@ section {
     color: #0056b3;
 }
 
-
-/* Style du formulaire de contact */
 #contact .card {
     border-radius: 10px;
 }
@@ -263,7 +231,6 @@ section {
     transform: translateY(-2px);
 }
 
-/* Style du footer */
 footer {
     background-color: #343a40;
     font-size: 0.9rem;
@@ -280,22 +247,6 @@ footer p {
     margin-bottom: 0.25rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Style du bouton université */
 .btn-link:hover {
     text-decoration: none;
     opacity: 0.8;
@@ -306,7 +257,6 @@ footer p {
     box-shadow: none;
 }
 
-/* Texte arabe */
 .fw-bold {
     font-size: 1.1rem;
     color: white;
@@ -317,44 +267,21 @@ footer p {
     color: #adb5bd;
 }
 
-/* Animation au survol */
 .btn-link:hover svg {
     transform: rotate(360deg);
     transition: transform 0.6s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Pour une navbar sticky */
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Animation du formulaire */
 #contact-form {
     transition: all 0.5s ease;
 }
 
-/* Style actif pour la navigation */
 .nav-link.active {
     font-weight: bold;
     border-bottom: 2px solid white;

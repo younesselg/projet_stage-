@@ -7,31 +7,34 @@ use App\Models\Adherent;
 
 class InscriptionController extends Controller
 {
-    public function create()
-    {
-        return view('inscription');
-    }
-
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'email' => 'required|email|unique:adherents,email',
+            'cin' => 'required|string|max:20|unique:adherents',
+            'date_naissance' => 'required|date',
+            'adresse' => 'required|string|max:500',
             'telephone' => 'required|string|max:20',
-            'branche' => 'required|string',
-            'sport' => 'required|string',
+            'email' => 'required|email|max:255|unique:adherents',
+            'sport' => 'required|string|max:50',
+            'niveau' => 'required|string|max:50',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'conditions' => 'accepted'
         ]);
 
-        Adherent::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-            'branche' => $request->branche,
-            'sport' => $request->sport,
-        ]);
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('public/photos');
+            $validatedData['photo'] = str_replace('public/', 'storage/', $path);
+        }
 
-        return redirect()->route('inscription')->with('success', 'Inscription réussie !');
+        Adherent::create($validatedData);
+        return redirect()->route('inscription')
+                         ->with('success', 'Votre inscription a été enregistrée avec succès!');
+    }
+    public function index()
+    {
+        $adherents = Adherent::all();
+        return view('admin.adherents.index', compact('adherents'));
     }
 }

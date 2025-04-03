@@ -5,14 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion du club sportifs</title>
+    <title>Club sportifs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="icon" type="images/png" href="{{ asset('favicon.png') }}">
+
 </head>
 <body>
-    <header id="main-header" class="bg-primary text-white text-center py-4">
+    <header id="main-header" class=" text-white text-center py-4" style="background-color: #8B4513 !important;">
         <h1>Club de sport Mohamed Iᵉʳ</h1>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
@@ -44,6 +45,7 @@
     </header>
 
     <main>
+    @yield('content')
         <section id="accueil" class="py-4">
         <div class="container">
                 <div class="text-center mb-5">
@@ -98,13 +100,11 @@
     </div>
 </section>
 
-        <!-- Section Services -->
 <section id="services" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5">NOS SERVICES</h2>
         
         <div class="row g-4">
-            <!-- Service 1 -->
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center">
@@ -118,7 +118,6 @@
                 </div>
             </div>
             
-            <!-- Service 2 -->
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center">
@@ -132,7 +131,6 @@
                 </div>
             </div>
             
-            <!-- Service 3 -->
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center">
@@ -146,7 +144,6 @@
             </div>
         </div>
         
-        <!-- Section Besoin d'aide -->
         <div class="text-center mt-5 pt-4">
             <div class="alert alert-info d-inline-block">
                 <h4 class="alert-heading">Besoin d'aide ?</h4>
@@ -156,13 +153,11 @@
     </div>
 </section>
 
-        <!-- Section Témoignages -->
 <section id="temoignages" class="py-5 bg-light">
     <div class="container">
         <h2 class="text-center mb-5">TÉMOIGNAGES</h2>
         
         <div class="row">
-            <!-- Témoignage 1 -->
             <div class="col-md-6 mb-4">
                 <div class="card h-100 border-0 shadow">
                     <div class="card-body p-4 p-md-5 text-center">
@@ -197,7 +192,6 @@
                 </div>
             </div>
             
-            <!-- Témoignage 2 - Adil Boudkhili -->
             <div class="col-md-6 mb-4">
                 <div class="card h-100 border-0 shadow">
                     <div class="card-body p-4 p-md-5 text-center">
@@ -235,7 +229,6 @@
     </div>
 </section>
 
-<!-- Section Contact -->
 <section id="contact" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5">CONTACT</h2>
@@ -273,7 +266,6 @@
             <div class="col-md-6 mb-4">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body p-0">
-                        <!-- Carte Google Maps centrée sur l'Université Mohammed Premier -->
                         <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.716729080044!2d-1.9391509241749603!3d34.41429587300741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7871e8a3135e07%3A0x1c9e0d6e3b5d8f1e!2sUniversit%C3%A9%20Mohammed%20Premier!5e0!3m2!1sfr!2sma!4v1719345671238!5m2!1sfr!2sma"
                             width="100%" 
@@ -291,8 +283,7 @@
 </section>
 </main>
 
-   
-    <!-- Section Contact -->
+
 <section id="contact" class="py-5 bg-light">
     <div class="container">
         <div class="row justify-content-center">
@@ -329,7 +320,6 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
@@ -354,11 +344,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Gestion de la classe active sur la navigation
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             
-            // Observer les sections visibles
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -372,13 +360,11 @@
                 threshold: 0.5
             });
             
-            // Observer chaque section
             document.querySelectorAll('section').forEach(section => {
                 observer.observe(section);
             });
             
             
-            // Navigation clavier (Alt + 1-5)
             document.addEventListener('keydown', function(e) {
                 if (e.altKey && e.key >= '1' && e.key <= '5') {
                     const index = parseInt(e.key) - 1;
@@ -390,17 +376,12 @@
                 }
             });
         });
-        // Animation plus élaborée
-// Remplacer cette partie dans votre script
+        
 function handleInscriptionClick(e) {
-    // Laisser le comportement par défaut du lien (redirection)
-    // Pas besoin de e.preventDefault() car on veut que le lien fonctionne normalement
     
-    // Animation optionnelle
     const header = document.getElementById('main-header');
     header.classList.add('header-alt');
     
-    // Animation de transition
     document.body.style.opacity = '0.5';
     setTimeout(() => {
         document.body.style.opacity = '1';
@@ -408,10 +389,11 @@ function handleInscriptionClick(e) {
     }, 300);
 }
 
-    // Appliquer à tous les liens d'inscription
     document.querySelectorAll('a[href*="inscription"]').forEach(link => {
         link.addEventListener('click', handleInscriptionClick);
     });
+
+    mix.copy('resources/images/favicon.ico', 'public/favicon.ico');
     </script>
 </body>
 </html>

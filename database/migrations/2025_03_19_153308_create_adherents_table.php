@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('cin')->unique()->after('id');
+            $table->date('date_naissance');
+            $table->string('adresse');
             $table->string('telephone');
-            $table->string('branche');
+            $table->string('email')->unique();
             $table->string('sport');
+            $table->string('niveau');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
@@ -29,5 +33,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('adherents');
+        Schema::table('adherents', function (Blueprint $table) {
+            $table->dropColumn('cin');
+        });
     }
 };

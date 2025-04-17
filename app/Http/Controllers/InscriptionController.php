@@ -18,7 +18,7 @@ class InscriptionController extends Controller
             'telephone' => 'required|string|max:20',
             'email' => 'required|email|max:255|unique:adherents',
             'sport' => 'required|string|max:50',
-            'niveau' => 'required|string|max:50',
+            'numero_appogee' => 'required|string|max:20|unique:adherents',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'conditions' => 'accepted'
         ]);

@@ -17,13 +17,13 @@ class Adherent extends Model
     protected $fillable = [
         'nom',
         'prenom',
-        'cin' => 'required|string|unique:adherents,cin',
+        'cin',
         'date_naissance',
         'adresse',
         'telephone',
         'email',
         'sport',
-        'niveau',
+        'numero_appogee',
         'photo'
     ];
 
@@ -49,10 +49,10 @@ class Adherent extends Model
     /**
      * Get the photo URL.
      *
-     * @return string|null
+     * @return string
      */
     public function getPhotoUrlAttribute()
     {
-        return $this->photo ? asset($this->photo) : null;
+        return $this->photo ? asset($this->photo) : asset('images/default-avatar.png');
     }
 }

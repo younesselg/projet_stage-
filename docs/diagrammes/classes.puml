@@ -1,0 +1,62 @@
+@startuml Gestion Club Sportif - Classes
+
+class Adherent {
+  -id: int
+  -nom: string
+  -prenom: string
+  -email: string
+  -telephone: string
+  -date_naissance: date
+  -cin: string
+  -numero_appogee: string
+  -date_inscription: date
+  -statut: string
+  +inscrire()
+  +modifier()
+  +supprimer()
+  +consulterHistorique()
+}
+
+class Activite {
+  -id: int
+  -nom: string
+  -description: string
+  -capacite: int
+  -horaire: string
+  -jour: string
+  -lieu: string
+  -niveau: string
+  +creer()
+  +modifier()
+  +supprimer()
+  +ajouterEquipement()
+}
+
+class Equipement {
+  -id: int
+  -nom: string
+  -description: string
+  -quantite: int
+  -etat: string
+  +ajouter()
+  +modifier()
+  -supprimer()
+  +verifierDisponibilite()
+}
+
+class Presence {
+  -id: int
+  -date: date
+  -adherent_id: int
+  -activite_id: int
+  -statut: string
+  +enregistrer()
+  +modifier()
+  +consulter()
+}
+
+Adherent "1" -- "0..*" Presence
+Activite "1" -- "0..*" Presence
+Activite "1" -- "0..*" Equipement
+
+@enduml 

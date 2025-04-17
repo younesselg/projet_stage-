@@ -1,0 +1,36 @@
+@startuml Processus de Paiement
+
+start
+
+:Adhérent sélectionne une activité;
+
+if (Vérification du solde) then (solde insuffisant)
+  :Afficher message d'erreur;
+  stop
+else (solde suffisant)
+  :Sélectionner mode de paiement;
+  
+  switch (Mode de paiement)
+  case (Espèces)
+    :Enregistrer paiement en espèces;
+  case (Carte bancaire)
+    :Rediriger vers la passerelle de paiement;
+    if (Paiement réussi?) then (oui)
+      :Enregistrer le paiement;
+    else (non)
+      :Afficher message d'erreur;
+      stop
+    endif
+  case (Virement)
+    :Générer les informations de virement;
+    :En attente de confirmation;
+  endswitch
+  
+  :Mettre à jour le statut de l'inscription;
+  :Envoyer confirmation par email;
+  :Générer reçu;
+endif
+
+stop
+
+@enduml 

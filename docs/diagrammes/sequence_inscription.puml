@@ -1,0 +1,34 @@
+@startuml Inscription Adhérent
+
+actor "Adhérent" as adherent
+participant "Interface Web" as ui
+participant "InscriptionController" as controller
+participant "Adherent" as model
+database "Base de données" as db
+
+adherent -> ui : Accède au formulaire d'inscription
+ui -> adherent : Affiche le formulaire
+adherent -> ui : Remplit le formulaire
+adherent -> ui : Soumet le formulaire
+
+ui -> controller : POST /inscription
+activate controller
+
+controller -> controller : Valide les données
+controller -> model : Crée un nouvel adhérent
+activate model
+
+model -> db : Insère les données
+activate db
+db --> model : Confirme l'insertion
+deactivate db
+
+model --> controller : Retourne l'adhérent créé
+deactivate model
+
+controller --> ui : Redirige vers confirmation
+deactivate controller
+
+ui -> adherent : Affiche la confirmation
+
+@enduml 

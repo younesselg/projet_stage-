@@ -1,47 +1,48 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club sportifs</title>
+    <title>Club sportifs - Université Mohamed Premier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="images/png" href="{{ asset('favicon.png') }}">
-
+    <link rel="icon" type="image/png" href="{{ asset('images/ump-logo.png') }}">
 </head>
 <body>
-    <header id="main-header" class=" text-white text-center py-4" style="background-color: #8B4513 !important;">
-        <h1>Club de sport Mohamed Iᵉʳ</h1>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand text-dark" href="#accueil">Club Sport</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white hover-underline" href="#accueil">Accueil</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white hover-underline" href="#apropos">À Propos</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white hover-underline" href="#services">Services</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white hover-underline" href="#temoignages">Témoignages</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white hover-underline" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+    <header id="main-header" class="text-white text-center py-4 bg-primary">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <img src="{{ asset('images/ump-logo.png') }}" alt="Logo UMP" class="me-3" style="height: 60px;">
+                <h1 class="mb-0">Club de sport Mohamed Iᵉʳ</h1>
             </div>
-        </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-white hover-underline" href="#accueil">Accueil</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-white hover-underline" href="#apropos">À Propos</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-white hover-underline" href="#services">Services</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-white hover-underline" href="#temoignages">Témoignages</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-white hover-underline" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -292,21 +293,59 @@
                     <div class="card-body p-4 p-md-5">
                         <h2 class="text-center mb-4">CONTACTEZ-NOUS</h2>
                         
-                        <form>
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        
+                        <form action="{{ route('contact.send') }}" method="POST">
+                            @csrf
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-3 mb-md-0">
                                     <label for="nom" class="form-label">Nom</label>
-                                    <input type="text" class="form-control" id="nom" required>
+                                    <input type="text" class="form-control @error('nom') is-invalid @enderror" 
+                                           id="nom" name="nom" value="{{ old('nom') }}" required>
+                                    @error('nom')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Adresse e-mail</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                           id="email" name="email" value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             
                             <div class="mb-4">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <textarea class="form-control @error('message') is-invalid @enderror" 
+                                          id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="text-center">

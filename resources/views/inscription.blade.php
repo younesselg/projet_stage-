@@ -93,7 +93,7 @@
                                         <option value="">Sélectionnez un sport</option>
                                         <option value="football" {{ old('sport') == 'football' ? 'selected' : '' }}>Football</option>
                                         <option value="basketball" {{ old('sport') == 'basketball' ? 'selected' : '' }}>Basketball</option>
-                                        <option value="volleyball" {{ old('sport') == 'volleyball' ? 'selected' : '' }}>Volleyball</option>
+                                        <option value="volleyball" {{ old('sport') == 'volleyball' ? 'selected' : '' }}>Handball</option>
                                     </select>
                                     @error('sport')
                                         <div class="invalid-feedback">{{ $message }}</div>

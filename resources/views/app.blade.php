@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <header id="main-header" class=" text-white text-center py-4" style="background-color: #8B4513 !important;">
+    <header id="main-header" class=" text-white text-center py-4 bg-primary" >
         <h1>Club de sport Mohamed Iᵉʳ</h1>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
@@ -38,6 +38,11 @@
                         <li class="nav-item me-3">
                             <a class="nav-link text-white hover-underline" href="#contact">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn btn-warning text-dark fw-bold ms-2" href="{{ route('admin.login') }}">
+                                <i class="fas fa-user-shield me-1"></i> Administration
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -58,6 +63,12 @@
                         Inscrivez-vous
                         </a>, gérez et suivez vos activités sportives.
                     </p>
+                    <div class="mt-4">
+                        <a href="{{ route('admin.login') }}" class="btn btn-warning btn-lg text-dark fw-bold">
+                            <i class="fas fa-user-shield me-2"></i>
+                            Espace Administration
+                        </a>
+                    </div>
                 </div>
         </div>
         </section>

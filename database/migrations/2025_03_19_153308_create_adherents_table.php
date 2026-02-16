@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('cin')->unique()->after('id');
+            $table->string('cin')->unique(); 
             $table->date('date_naissance');
             $table->string('adresse');
             $table->string('telephone');
@@ -32,9 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adherents');
-        Schema::table('adherents', function (Blueprint $table) {
-            $table->dropColumn('cin');
-        });
+        Schema::dropIfExists('adherents'); 
     }
 };
